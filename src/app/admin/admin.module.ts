@@ -8,6 +8,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ControlSidebarComponent } from './components/control-sidebar/control-sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { SharedModule } from '../shared/shared-module';
 
 
 @NgModule({
@@ -17,11 +18,15 @@ import { HomeComponent } from './home/home.component';
     SidebarComponent,
     ControlSidebarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
+  ],
+  exports: [
+    SharedModule
   ]
 })
 export class AdminModule { }

@@ -35,35 +35,32 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-cogs"></i>
             <p>
-              Starter Pages
+              Configuración
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Active Page</p>
+              <a routerLink="/app/configuration/regions" class="nav-link">
+                <i class="fas fa-map-marker-alt nav-icon"></i>
+                <p>Regiones</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Inactive Page</p>
+              <a routerLink="/app/configuration/branchs" class="nav-link">
+                <i class="fas fa-code-branch nav-icon"></i>
+                <p>Sucursales</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/app/configuration/catalogs" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>Catálogos</p>
               </a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/app" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
-              Simple Link
-              <span class="right badge badge-success">New</span>
-            </p>
-          </a>
         </li>
       </ul>
     </nav>

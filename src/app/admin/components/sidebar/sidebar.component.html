@@ -1,0 +1,71 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a routerLink="/app" class="brand-link">
+    <img src="assets/img/cash-icon.png" alt="Logo" class="brand-image img-circle elevation-3" />
+    <span class="brand-text font-weight-light">{{ appBrand }}</span>
+  </a>
+
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img
+          src="assets/img/user-icon.png"
+          class="img-circle elevation-2"
+          alt="User Image"
+        />
+      </div>
+      <div class="info">
+        <a routerLink="/app/profile" routerLinkActve="active" class="d-block"
+          >User name</a
+        >
+      </div>
+    </div>
+
+    <nav class="mt-2">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column nav-child-indent"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <li class="nav-item">
+          <a routerLink="/app" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>Inicio</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Starter Pages
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Active Page</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Inactive Page</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/app" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Simple Link
+              <span class="right badge badge-success">New</span>
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

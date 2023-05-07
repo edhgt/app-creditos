@@ -1,0 +1,64 @@
+<div class="card-body p-5">
+  <form action="../../index3.html" method="post">
+    <div class="input-group mb-3">
+      <input type="email" class="form-control form-control-lg" placeholder="Correo electrónico">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-envelope fa-lg"></span>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        class="form-control form-control-lg"
+        placeholder="Nueva contraseña"
+      />
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <i
+            class="fas fa-lg"
+            role="button"
+            [title]="
+              showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'
+            "
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showPassword = !showPassword"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        class="form-control form-control-lg"
+        placeholder="Confirmar nueva contraseña"
+      />
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <i
+            class="fas fa-lg"
+            role="button"
+            [title]="
+              showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'
+            "
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showPassword = !showPassword"
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div class="mt-2 mb-3">
+      <a class="btn btn-primary btn-block btn-lg" routerLink="/admin">
+        <i class="fa fa-sign-in-alt mr-2"></i> Iniciar sesión
+      </a>
+      <!-- <button type="submit" class="btn btn-primary btn-block btn-lg">
+        <i class="fa fa-sign-in-alt mr-2"></i> Iniciar sesión
+      </button> -->
+    </div>
+  </form>
+  <p class="mb-1">
+    <a routerLink="/auth/login">Inicio de sesión</a>
+  </p>
+</div>
+

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RegionsRoutingModule } from './regions-routing.module';
 import { RegionsComponent } from './regions.component';
 
-
 @NgModule({
   declarations: [
     RegionsComponent

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BranchsRoutingModule } from './branchs-routing.module';
 import { BranchsComponent } from './branchs.component';
 
-
 @NgModule({
   declarations: [
     BranchsComponent

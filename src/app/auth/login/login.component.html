@@ -1,44 +1,56 @@
 <div class="card-body p-5">
-  <form action="../../index3.html" method="post">
+  <form [formGroup]="form" (ngSubmit)="login()">
     <div class="input-group mb-3">
       <input
         type="email"
         class="form-control form-control-lg"
         placeholder="Usuario"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid': isEmailInvalid
+        }"
       />
       <div class="input-group-append">
         <div class="input-group-text">
           <i class="fas fa-user fa-lg"></i>
         </div>
       </div>
+      <div class="invalid-feedback" *ngIf="email?.hasError('required')">
+        El correo electrónico es obligatorio
+      </div>
     </div>
     <div class="input-group mb-3">
       <input
         [type]="showPassword ? 'text' : 'password'"
+        formControlName="password"
         class="form-control form-control-lg"
         placeholder="Contraseña"
+        [ngClass]="{
+          'is-invalid': isPasswordInvalid
+        }"
       />
       <div class="input-group-append">
         <div class="input-group-text">
           <i
             class="fas fa-lg"
             role="button"
-            [title]="
-              showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'
-            "
+            [title]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
             [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
             (click)="showPassword = !showPassword"
           ></i>
         </div>
       </div>
+      <div class="invalid-feedback" *ngIf="password?.hasError('required')">
+        La contraseña es obligatoria
+      </div>
+      <div class="invalid-feedback" *ngIf="password?.hasError('invalid')">
+        Estas credenciales no coinciden con nuestros registros
+      </div>
     </div>
     <div class="mt-2 mb-3">
-      <a class="btn btn-primary btn-block btn-lg" routerLink="/app">
+      <button type="submit" class="btn btn-primary btn-block btn-lg">
         <i class="fa fa-sign-in-alt mr-2"></i> Iniciar sesión
-      </a>
-      <!-- <button type="submit" class="btn btn-primary btn-block btn-lg">
-        <i class="fa fa-sign-in-alt mr-2"></i> Iniciar sesión
-      </button> -->
+      </button>
     </div>
   </form>
   <p class="mb-1">

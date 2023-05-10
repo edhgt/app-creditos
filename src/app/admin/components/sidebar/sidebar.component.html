@@ -1,6 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <a routerLink="/app" class="brand-link">
-    <img src="assets/img/cash-icon.png" alt="Logo" class="brand-image img-circle elevation-3" />
+    <img
+      src="assets/img/cash-icon.png"
+      alt="Logo"
+      class="brand-image img-circle elevation-3"
+    />
     <span class="brand-text font-weight-light">{{ appBrand }}</span>
   </a>
 
@@ -14,9 +18,9 @@
         />
       </div>
       <div class="info">
-        <a routerLink="/app/profile" routerLinkActve="active" class="d-block"
-          >User name</a
-        >
+        <a routerLink="/app/profile" routerLinkActve="active" class="d-block">{{
+          user?.name
+        }}</a>
       </div>
     </div>
 
@@ -28,9 +32,24 @@
         data-accordion="false"
       >
         <li class="nav-item">
-          <a routerLink="/app" routerLinkActive="active" class="nav-link">
+          <a
+            routerLink="/app"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+          >
             <i class="nav-icon fas fa-home"></i>
             <p>Inicio</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/app/profile"
+            routerLinkActive="active"
+            class="nav-link"
+          >
+            <i class="nav-icon fas fa-user"></i>
+            <p>Perfil</p>
           </a>
         </li>
         <li class="nav-item">

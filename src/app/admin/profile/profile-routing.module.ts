@@ -7,12 +7,8 @@ import { ProfileComponent } from './profile.component';
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: ProfileComponent,
     children: [
-      {
-        path: '',
-        component: ProfileComponent,
-      },
       {
         path: 'password',
         loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)

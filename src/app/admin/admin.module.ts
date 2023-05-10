@@ -8,7 +8,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ControlSidebarComponent } from './components/control-sidebar/control-sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ContentHeaderComponent } from './components/content-header/content-header.component';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { ContentHeaderComponent } from './components/content-header/content-head
     SidebarComponent,
     ControlSidebarComponent,
     FooterComponent,
-    HomeComponent,
-    ContentHeaderComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

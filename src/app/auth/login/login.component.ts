@@ -37,9 +37,7 @@ export class LoginComponent {
           this.router.navigate(['/app']);
         },
         error: (error) => {
-          if(error.status === 401) {
-            this.form.controls['password'].setErrors({ invalid: true });
-          }
+          this.form.controls['password'].setErrors({ invalid: true });
         }
       });
     } else {

@@ -26,7 +26,7 @@
             </div>
           </div>
         </div>
-      
+
         <div class="col-md-9">
           <div class="card">
             <div class="card-header p-2">
@@ -51,7 +51,20 @@
               </ul>
             </div>
             <div class="card-body">
-              <pre>{{ user | json }}</pre>
+                <strong><i class="fas fa-check mr-1"></i> Nombre</strong>
+                <p class="text-muted">{{user?.name}}</p>
+                <strong><i class="fas fa-check mr-1"></i> Correo</strong>
+                <p class="text-muted">{{user?.email}}</p>
+                <strong><i class="fas fa-check mr-1"></i> No. DPI(cui)</strong>
+                <p class="text-muted">{{user?.cui}}</p>
+                <strong><i class="fas fa-check mr-1"></i> No. Celular</strong>
+                <p class="text-muted">{{user?.celular}}</p>
+                <strong><i class="fas fa-check mr-1"></i>Dirección de Domicilio</strong>
+                <p class="text-muted">{{user?.direccion}}</p>
+                <strong><i class="fas fa-check mr-1"></i>Fecha Nacimiento</strong>
+                <p class="text-muted">{{user?.fecha_nacimiento}}</p>
+                <strong><i class="fas fa-check mr-1"></i>Sucursal</strong>
+                <p class="text-muted">{{user?.sucursal_id}}</p>
               <router-outlet></router-outlet>
             </div>
           </div>

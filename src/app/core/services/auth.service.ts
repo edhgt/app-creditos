@@ -53,6 +53,8 @@ export class AuthService {
   }
 
   logout() {
-    this.tokenService.removeToken();
+    return this.http.post('logout', {}).pipe(
+      tap(() => this.tokenService.removeToken())
+    );
   }
 }

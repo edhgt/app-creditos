@@ -3,12 +3,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0">Perfil Usuario</h1>
+          <h1 class="m-0">Perfil de usuario</h1>
         </div>
       </div>
     </div>
   </section>
- <!--mi perfil-->
 
   <section class="content">
     <div class="container-fluid">
@@ -16,36 +15,42 @@
         <div class="col-md-12">
           <div class="card card-widget widget-user">
             <div class="widget-user-header bg-info">
-              <h3 class="widget-user-username"> {{user?.name}}</h3>
-              <h5 class="widget-user-desc">{{user?.email}}</h5>
+              <h3 class="widget-user-username">{{ user?.name }}</h3>
+              <h5 class="widget-user-desc">{{ user?.email }}</h5>
             </div>
             <div class="widget-user-image">
-              <img class="img-circle elevation-2" src="assets/img/user-icon.png" alt="Avatar User">
+              <img
+                class="img-circle elevation-2"
+                src="assets/img/user-icon.png"
+                alt="Avatar User"
+              />
             </div>
             <div class="card-footer">
               <div class="row">
                 <div class="col-sm-3 border-right">
                   <div class="description-block">
                     <h5 class="description-header">NÚMERO DPI</h5>
-                    <span class="description-text">{{user?.cui}}</span>
+                    <span class="description-text">{{ user?.cui }}</span>
                   </div>
                 </div>
                 <div class="col-sm-3 border-right">
                   <div class="description-block">
                     <h5 class="description-header">CELULAR</h5>
-                    <span class="description-text">{{user?.celular}}</span>
+                    <span class="description-text">{{ user?.celular }}</span>
                   </div>
                 </div>
                 <div class="col-sm-3 border-right">
                   <div class="description-block">
                     <h5 class="description-header">DIRECCIÓN</h5>
-                    <span class="description-text">{{user?.direccion}}</span>
+                    <span class="description-text">{{ user?.direccion }}</span>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <div class="description-block">
                     <h5 class="description-header">FECHA NACIMIENTO</h5>
-                    <span class="description-text">{{user?.fecha_nacimiento}}</span>
+                    <span class="description-text">{{
+                      user?.fecha_nacimiento
+                    }}</span>
                   </div>
                 </div>
               </div>
@@ -65,25 +70,14 @@
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    routerLink="/app/profile"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    >Datos generales</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link"
                     routerLink="/app/profile/password"
                     routerLinkActive="active"
-                    >Contraseña</a
+                    >Cambiar contraseña</a
                   >
                 </li>
               </ul>
             </div>
-            <div class="card-body">
-              <router-outlet></router-outlet>
-            </div>
+            <router-outlet></router-outlet>
           </div>
         </div>
       </div>

@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './clients.component';
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
   declarations: [
-    ClientsComponent
+    ClientsComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,

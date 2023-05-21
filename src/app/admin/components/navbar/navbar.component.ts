@@ -19,10 +19,10 @@ export class NavbarComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.authSubscription?.unsubscribe();
   }
-    
-
+  
   logout() {
-    this.authService.logout();
-    this.router.navigate(['/auth/login']);
+    this.authService.logout().subscribe(() => {
+      this.router.navigate(['/auth/login']);
+    });
   }
 }

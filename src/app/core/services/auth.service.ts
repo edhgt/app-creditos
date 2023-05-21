@@ -3,19 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, switchMap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-import { environment } from './../../../environments/environment';
 import { Credentials } from 'src/app/auth/core/models/credential.model';
 import { Auth } from '../models/auth.model';
 import { User } from './../models/user.model';
 import { TokenService } from './../services/token.service';
-import { setToken } from '../interceptors/token.interceptor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private apiUrl = `${environment.API_URL}/api/v1`;
   private user = new BehaviorSubject<User | null>(null);
   user$ = this.user.asObservable();
 
@@ -25,7 +22,7 @@ export class AuthService {
   ) { }
 
   login(credentials: Credentials) {
-    return this.http.post<Auth>(`${this.apiUrl}/login`, credentials, { context: setToken(false) })
+    return this.http.post<Auth>('login', credentials)
     .pipe(
       tap(response => {
         this.tokenService.saveToken(response.access_token);
@@ -39,7 +36,7 @@ export class AuthService {
     //   Accept: 'application/json',
     //   Authorization: `Bearer ${this.tokenService.getToken()}`,
     // });
-    return this.http.get<User>(`${this.apiUrl}/me`)
+    return this.http.get<User>('me')
     .pipe(
       tap(user => this.user.next(user))
     );
@@ -53,7 +50,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post('logout', {}).pipe(
+    return this.http.post('logout', null).pipe(
       tap(() => this.tokenService.removeToken())
     );
   }

@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './../services/token.service';
+import { environment } from 'src/environments/environment';
 
 const SET_TOKEN = new HttpContextToken<boolean>(() => true);
 
@@ -33,14 +34,14 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private addToken(request: HttpRequest<unknown>) {
-    
     const token = this.tokenService.getToken();
     if (token) {
-      const authReq = request.clone({
+      const requestClone = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`)
       });
-      return authReq;
+      return requestClone
     }
+
     return request;
   }
 }

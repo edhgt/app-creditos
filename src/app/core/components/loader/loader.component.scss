@@ -1,0 +1,39 @@
+.overlay {
+  position: fixed;
+  display: block;
+  
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(74, 74, 74, .8);
+  z-index: 99999;
+ }
+
+ .center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  margin-top: 7px;
+  display: block;
+  color: white;
+}
+ 
+ .loader {
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid #34db55; 
+  border-radius: 50%;
+  width: 95px;
+  height: 95px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,10 +1,11 @@
 <div class="card-body p-5">
-  <form [formGroup]="form" (ngSubmit)="login()">
+  <form autocomplete="on" [formGroup]="form" (ngSubmit)="login()">
     <div class="input-group mb-3">
       <input
+        id="email"
         type="email"
         class="form-control form-control-lg"
-        placeholder="Usuario"
+        placeholder="Correo electrónico"
         formControlName="email"
         [ngClass]="{
           'is-invalid': isEmailInvalid
@@ -12,7 +13,7 @@
       />
       <div class="input-group-append">
         <div class="input-group-text">
-          <i class="fas fa-user fa-lg"></i>
+          <i class="fas fa-envelope fa-lg"></i>
         </div>
       </div>
       <div class="invalid-feedback" *ngIf="email?.hasError('required')">

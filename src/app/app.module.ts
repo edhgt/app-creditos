@@ -5,12 +5,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { DefaultInterceptor } from './core/interceptors/default.interceptor';
+import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ErrorsInterceptor } from './core/interceptors/errors.interceptor';
+import { LoaderComponent } from './core/components/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,8 @@ import { ErrorsInterceptor } from './core/interceptors/errors.interceptor';
     AppRoutingModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorsInterceptor, multi: true }
   ],

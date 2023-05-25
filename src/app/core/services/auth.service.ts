@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { tap, switchMap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 

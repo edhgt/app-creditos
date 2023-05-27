@@ -1,0 +1,1 @@
+export type EstadoType = 'A' | 'M' | 'L';

@@ -1,5 +1,4 @@
-export interface typeConstrution
-{
+export interface TypeConstrution{
   id: number
   nombre: string;
 }

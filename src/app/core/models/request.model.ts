@@ -1,5 +1,4 @@
-export interface request
-{
+export interface Request{
   id: number;
   fecha_aprobacion: Date;
   monto_solicitado: number;

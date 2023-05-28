@@ -1,4 +1,4 @@
-export interface kinship{
+export interface Kinship{
   id: number;
   nombre: string;
 }

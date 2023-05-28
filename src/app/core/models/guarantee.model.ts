@@ -1,4 +1,4 @@
-export interface guarantee{
+export interface Guarantee{
   id: number;
   modelo: string;
   serie: string;

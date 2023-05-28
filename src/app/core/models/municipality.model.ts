@@ -1,5 +1,4 @@
-export interface municipality
-{
+export interface Municipality{
   id: number;
   nombre: string;
   departamento_id: number;

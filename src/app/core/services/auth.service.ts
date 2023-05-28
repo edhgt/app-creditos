@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { Credentials } from 'src/app/auth/core/models/credential.model';
 import { Auth } from '../models/auth.model';
-import { User } from './../models/user.model';
+import { User } from '../models/user.model';
 import { TokenService } from './../services/token.service';
 
 @Injectable({

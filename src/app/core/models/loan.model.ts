@@ -1,5 +1,4 @@
-export interface loan
-{
+export interface Loan{
   id: number;
   monto: number;
   tasa_interes: number;

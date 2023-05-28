@@ -1,4 +1,4 @@
-export interface shorp{
+export interface Shop{
   id: number;
   nombre: string;
   direccion: string;

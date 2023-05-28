@@ -1,4 +1,4 @@
-export interface payment{
+export interface Payment{
   id: number;
   monto: number;
   fecha_estimada_pago: Date;

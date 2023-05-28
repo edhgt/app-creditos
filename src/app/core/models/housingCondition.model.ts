@@ -1,4 +1,4 @@
-export interface housingCondition{
+export interface HousingCondition{
   id: number;
   nombre: string;
 }

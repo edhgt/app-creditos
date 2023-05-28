@@ -1,5 +1,4 @@
-export interface commerce
-{
+export interface Commerce{
   id: number;
   nombre_comercio: string;
   servicio: string;

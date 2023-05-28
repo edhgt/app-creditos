@@ -1,4 +1,4 @@
-export interface article{
+export interface Article{
   id: number;
   nombre:string;
 }

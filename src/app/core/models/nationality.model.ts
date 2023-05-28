@@ -1,5 +1,4 @@
-export interface nationality
-{
+export interface Nationality{
   id: number;
   nombre: string;
 }

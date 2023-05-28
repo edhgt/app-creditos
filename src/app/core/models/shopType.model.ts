@@ -1,5 +1,4 @@
-export interface shopType
-{
+export interface ShopType{
   id: number;
   nombre: string;
 }

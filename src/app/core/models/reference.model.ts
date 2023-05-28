@@ -1,5 +1,4 @@
-export interface reference
-{
+export interface Reference{
   id: number;
   nombre: string;
   direccion: string;

@@ -1,5 +1,5 @@
 
-export interface economicActivity{
+export interface EconomicActivity{
   id: number;
   nombre: string;
 }

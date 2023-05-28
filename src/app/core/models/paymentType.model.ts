@@ -1,4 +1,4 @@
-export  interface paymentType{
+export  interface PaymentType{
   id: number;
   nombre: string;
 }

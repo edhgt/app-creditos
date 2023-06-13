@@ -32,4 +32,14 @@ export class CatalogsComponent implements OnInit {
     });
   }
 
+  create() {}
+
+  store() {}
+
+  edit() {}
+
+  update() {}
+
+  delete() {}
+
 }

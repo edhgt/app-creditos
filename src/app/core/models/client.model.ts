@@ -1,3 +1,5 @@
+import { EstadoCivilType } from '../types/estadocivil.type';
+import { GeneroType } from '../types/genero.type';
 import { EstadoType } from '../types/estado.type';
 
 export interface Client {
@@ -7,15 +9,15 @@ export interface Client {
   nombres: string;
   apellidos: string;
   fecha_nacimiento: Date;
-  estado_civil: string;
-  genero: string;
+  estado_civil: EstadoCivilType;
+  genero: GeneroType;
   celular: string;
   telefono?: string;
   correo?: string;
   observaciones?: string;
   estado?: EstadoType;
   fotografia: string;
-  direccion: string;
+  direccion?: string;
   profesion_id: number;
   nacionalidad_id: number;
   departamento_id: number;
@@ -23,8 +25,12 @@ export interface Client {
   condicion_vivienda_id: number;
   tipo_construccion_id: number;
   sucursal_id: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
   foto?: string;
 }
+
+export interface ClientCreate extends Omit<Client, 'id'> {}
+
+export interface ClientUpdate extends Partial<ClientCreate> {};

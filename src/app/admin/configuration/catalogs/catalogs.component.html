@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0">{{ title }}</h1>
+          <h1 class="m-0">Catálogos</h1>
         </div>
       </div>
     </div>
@@ -12,7 +12,35 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <p>catalogs works!</p>
+          <div class="card">
+            <div class="card-body p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nombre</th>
+                    <th style="width: 40px">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let catalog of catalogs?.data">
+                    <td>{{ catalog.id }}</td>
+                    <td>{{ catalog.name }}</td>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Opciones">
+                        <button class="btn btn-outline-primary btn-sm">
+                          Modificar
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm">
+                          Eliminar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

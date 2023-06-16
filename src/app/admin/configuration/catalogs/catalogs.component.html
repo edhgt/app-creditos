@@ -13,6 +13,17 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
+            <div class="card-header">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                (click)="create()"
+              >
+                Nuevo catalogo
+              </button>
+            </div>
             <div class="card-body p-0">
               <table class="table">
                 <thead>
@@ -23,16 +34,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let catalog of catalogs?.data">
+                  <tr *ngFor="let catalog of catalogs?.data; index as i">
                     <td>{{ catalog.id }}</td>
                     <td>{{ catalog.name }}</td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Opciones">
-                        <button class="btn btn-outline-primary btn-sm">
+                        <button
+                          class="btn btn-outline-primary btn-sm"
+                          (click)="edit(i, catalog)"
+                        >
                           Modificar
-                        </button>
-                        <button class="btn btn-outline-danger btn-sm">
-                          Eliminar
                         </button>
                       </div>
                     </td>
@@ -45,4 +56,34 @@
       </div>
     </div>
   </section>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ titleModal }}</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

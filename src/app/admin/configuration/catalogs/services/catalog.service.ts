@@ -12,11 +12,12 @@ export class CatalogService {
     private http: HttpClient
   ) { }
 
-  index(limit?: number, offset?: number) {
+  index(per_page?: number, offset?: number) {
     let params = new HttpParams();
-    if(limit !== undefined && offset !== undefined) {
-      params = params.set('limit', limit);
-      params = params.set('offset', offset);
+    //if(per_page !== undefined && offset !== undefined) {
+    if(per_page !== undefined) {
+      params = params.set('per_page', per_page);
+      //params = params.set('offset', offset);
     }
     return this.http.get<CatalogIndex>('catalogs', { params });
   }

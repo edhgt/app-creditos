@@ -3,14 +3,14 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0">Catálogos del sistema</h1>
+          <h1 class="m-0">{{ title }}</h1>
         </div>
       </div>
     </div>
   </section>
   <section class="content">
     <div class="container-fluid">
-      <button
+      <!-- <button
         type="button"
         class="btn btn-primary mb-4"
         data-toggle="modal"
@@ -18,8 +18,8 @@
         (click)="create()"
       >
         Nuevo catalogo
-      </button>
-      <div class="row">
+      </button> -->
+      <!-- <div class="row">
         <div
           class="col-12 col-sm-4 col-md-3 d-flex align-items-stretch flex-column"
           *ngFor="let catalog of catalogs?.data; index as i"
@@ -33,22 +33,25 @@
             </div>
             <div class="card-footer text-center">
               <div class="btn-group btn-group-toggle">
-                <a class="btn btn-outline-primary" [routerLink]="['./', catalog.table]" [queryParams]="{ title: catalog.name}"
-                >
+                <a class="btn btn-outline-primary" routerLink="./tables">
                   <i class="fas fa-table"></i>
                   Tablas
                 </a>
-                <button class="btn btn-outline-primary" title="Modificar" (click)="edit(i, catalog)">
+                <button
+                  class="btn btn-outline-primary"
+                  title="Modificar"
+                  (click)="edit(i, catalog)"
+                >
                   <i class="fas fa-edit"></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
-  <div
+  <!-- <div
     class="modal fade"
     id="modalCatalog"
     tabindex="-1"
@@ -93,10 +96,17 @@
             <button type="submit" class="btn btn-success">
               Guardar cambios
             </button>
-            <span class="text-danger" role="button" *ngIf="action == 'update'" [title]="'Eliminar ' + catalog.name" (click)="destroy(catalog.id)">Eliminar</span>
+            <span
+              class="text-danger"
+              role="button"
+              *ngIf="action == 'update'"
+              [title]="'Eliminar ' + catalog.name"
+              (click)="destroy(catalog.id)"
+              >Eliminar</span
+            >
           </div>
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

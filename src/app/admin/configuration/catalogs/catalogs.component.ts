@@ -4,6 +4,8 @@ import { CatalogService } from './services/catalog.service';
 import { Catalog, CatalogIndex } from './models/catalog.model';
 import { ToastrService } from 'ngx-toastr';
 
+declare var $: any;
+
 @Component({
   selector: 'app-catalogs',
   templateUrl: './catalogs.component.html',
@@ -15,6 +17,7 @@ export class CatalogsComponent implements OnInit {
   catalog!: Catalog;
   titleModal: string = '';
   currentIndexCatalog: number = 0;
+  action: string = 'create';
 
   constructor(
     private toastr: ToastrService,
@@ -25,7 +28,7 @@ export class CatalogsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._catalog.index().subscribe(response => {
+    this._catalog.index(25).subscribe((response: CatalogIndex) => {
       this.catalogs = response;
     });
   }
@@ -38,7 +41,7 @@ export class CatalogsComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.catalog.id) {
+    if(this.action === 'update') {
       this.update();
     } else {
       this.store();
@@ -47,10 +50,13 @@ export class CatalogsComponent implements OnInit {
 
   create() {
     this.titleModal = 'Crear tabla catalogo';
+    this.currentIndexCatalog = 0;
+    this.action = 'create';
   }
 
   store() {
-    this._catalog.store(this.form.value).subscribe(response => {
+    this._catalog.store(this.form.value).subscribe((response: Catalog) => {
+      $('#modalCatalog').modal('toggle')
       this.catalogs.data.push(response);
       this.toastr.success('Registro exitoso', 'Se creó correctamente el catalogo');
     });
@@ -59,21 +65,29 @@ export class CatalogsComponent implements OnInit {
   edit(index: number, catalog: Catalog) {
     this.titleModal = 'Modificar tabla catalogo';
     this.currentIndexCatalog = index;
+    this.action = 'update'
     this.catalog = catalog;
+    this.form.patchValue(catalog)
+    $('#modalCatalog').modal('toggle')
   }
 
   update() {
-    this._catalog.update(this.form.value).subscribe(response => {
+    this._catalog.update({
+      id: this.catalog.id,
+      ...this.form.value
+    }).subscribe((response: Catalog) => {
       this.catalogs.data[this.currentIndexCatalog] = response;
-      this.toastr.success('Actualización exitosa', 'Se actualizó correctamente el catalogo');
+      this.toastr.success('Se actualizó correctamente el catalogo');
+      $('#modalCatalog').modal('toggle')
     });
   }
 
-  delete() {
-    const confirmDelete: boolean = confirm('¿Está seguro de eliminar el catalogo: \n' + this.catalog.name);
+  destroy(id: number) {
+    const confirmDelete: boolean = confirm('¿Está seguro de eliminar el catalogo: \n' + this.form.get('name')?.value);
     if(confirmDelete) {
-      this._catalog.delete(this.catalog.id).subscribe(() => {
-        this.catalogs.data.slice(this.currentIndexCatalog, 1);
+      this._catalog.delete(id).subscribe(() => {
+        this.catalogs.data.splice(this.currentIndexCatalog, 1);
+        $('#modalCatalog').modal('toggle')
         this.toastr.info("Catalogo eliminado");
       });
     }

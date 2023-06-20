@@ -10,15 +10,36 @@
   </section>
   <section class="content">
     <div class="container-fluid">
-      <button
-        type="button"
-        class="btn btn-primary mb-4"
-        data-toggle="modal"
-        data-target="#modalCatalog"
-        (click)="create()"
-      >
-        Nuevo catalogo
-      </button>
+      <div class="row">
+        <div class="col-12 mb-2">
+          <form [formGroup]="form" novalidate>
+            <label for="catalogTables">Catalogo</label>
+            <select
+              name="catalogTables"
+              id="catalogTables"
+              class="custom-select"
+              formControlName="table"
+              (change)="index()"
+            >
+              <option [value]="ct.table" *ngFor="let ct of catalogSelect">
+                {{ ct.name }}
+              </option>
+            </select>
+          </form>
+        </div>
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-primary mb-4"
+            data-toggle="modal"
+            data-target="#modalCatalog"
+            (click)="create()"
+            *ngIf="table?.value != ''"
+          >
+            Nuevo catalogo
+          </button>
+        </div>
+      </div>
       <div class="row">
         <div
           class="col-12 col-sm-4 col-md-3 d-flex align-items-stretch flex-column"
@@ -29,21 +50,21 @@
               {{ catalog.table }}
             </div>
             <div class="card-body pt-0">
-              <b class="lead">{{ catalog.name }}</b>
+              <b class="lead">{{ catalog.nombre }}</b>
             </div>
             <div class="card-footer text-center">
-              <div class="btn-group btn-group-toggle">
-                <a class="btn btn-outline-primary" [routerLink]="['./', catalog.table]" [queryParams]="{ title: catalog.name}"
-                >
-                  <i class="fas fa-table"></i>
-                  Tablas
-                </a>
-                <button class="btn btn-outline-primary" title="Modificar" (click)="edit(i, catalog)">
-                  <i class="fas fa-edit"></i>
-                </button>
-              </div>
+              <button
+                class="btn btn-outline-primary"
+                title="Modificar"
+                (click)="edit(i, catalog)"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
             </div>
           </div>
+        </div>
+        <div class="col-12 alert alert-light" role="alert" *ngIf="catalogs?.data?.length === 0">
+          Catalogo sin registros.
         </div>
       </div>
     </div>
@@ -71,21 +92,12 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="modal-body">
             <div class="form-group">
-              <label for="table">Tabla</label>
-              <input
-                id="table"
-                type="text"
-                class="form-control form-control-lg"
-                formControlName="table"
-              />
-            </div>
-            <div class="form-group">
               <label for="table">Nombre</label>
               <input
                 id="name"
                 type="text"
                 class="form-control form-control-lg"
-                formControlName="name"
+                formControlName="nombre"
               />
             </div>
           </div>
@@ -93,7 +105,14 @@
             <button type="submit" class="btn btn-success">
               Guardar cambios
             </button>
-            <span class="text-danger" role="button" *ngIf="action == 'update'" [title]="'Eliminar ' + catalog.name" (click)="destroy(catalog.id)">Eliminar</span>
+            <span
+              class="text-danger"
+              role="button"
+              *ngIf="action == 'update'"
+              [title]="'Eliminar ' + catalog.nombre"
+              (click)="destroy(catalog.id)"
+              >Eliminar</span
+            >
           </div>
         </form>
       </div>

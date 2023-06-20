@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SelectGeneratorService } from 'src/app/core/services/select-generator.service';
 import { CatalogService } from './services/catalog.service';
+import { SelectGenerator } from 'src/app/core/models/select-generator.model';
 import { Catalog, CatalogIndex } from './models/catalog.model';
 import { ToastrService } from 'ngx-toastr';
 
@@ -12,7 +15,9 @@ declare var $: any;
   styleUrls: ['./catalogs.component.scss']
 })
 export class CatalogsComponent implements OnInit {
+  type: string | null = 'catalogIndex';
   form!:  FormGroup;
+  catalogSelect: SelectGenerator[] = [];
   catalogs!: CatalogIndex;
   catalog!: Catalog;
   titleModal: string = '';
@@ -20,7 +25,9 @@ export class CatalogsComponent implements OnInit {
   action: string = 'create';
 
   constructor(
+    private route: ActivatedRoute,
     private toastr: ToastrService,
+    private selectGenerator: SelectGeneratorService,
     private _catalog: CatalogService,
     private _formBuilder: FormBuilder
   ) {
@@ -28,15 +35,17 @@ export class CatalogsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._catalog.index(25).subscribe((response: CatalogIndex) => {
-      this.catalogs = response;
+    this.type = this.route.snapshot.queryParamMap.get('type');
+    this.selectGenerator.getAll('catalog_tables').subscribe(response => {
+      this.catalogSelect = response;
     });
+    
   }
 
   private buildForm() {
     this.form = this._formBuilder.group({
       table: ['', [Validators.required]],
-      name: ['', Validators.required]
+      nombre: ['', Validators.required]
     });
   }
 
@@ -48,10 +57,17 @@ export class CatalogsComponent implements OnInit {
     }
   }
 
+  index() {
+    this._catalog.index(this.form.get('table')?.value, 25).subscribe((response: CatalogIndex) => {
+      this.catalogs = response;
+    });
+  }
+
   create() {
-    this.titleModal = 'Crear tabla catalogo';
+    this.titleModal = 'Crear catalogo';
     this.currentIndexCatalog = 0;
     this.action = 'create';
+    this.form.patchValue({ nombre: ''});
   }
 
   store() {
@@ -63,11 +79,12 @@ export class CatalogsComponent implements OnInit {
   }
 
   edit(index: number, catalog: Catalog) {
-    this.titleModal = 'Modificar tabla catalogo';
+    console.log(catalog)
+    this.titleModal = 'Modificar catalogo';
     this.currentIndexCatalog = index;
     this.action = 'update'
     this.catalog = catalog;
-    this.form.patchValue(catalog)
+    this.form.patchValue({...catalog, table: this.table?.value})
     $('#modalCatalog').modal('toggle')
   }
 
@@ -78,19 +95,24 @@ export class CatalogsComponent implements OnInit {
     }).subscribe((response: Catalog) => {
       this.catalogs.data[this.currentIndexCatalog] = response;
       this.toastr.success('Se actualizó correctamente el catalogo');
+      this.form.patchValue({ nombre: ''});
       $('#modalCatalog').modal('toggle')
     });
   }
 
   destroy(id: number) {
-    const confirmDelete: boolean = confirm('¿Está seguro de eliminar el catalogo: \n' + this.form.get('name')?.value);
+    const confirmDelete: boolean = confirm('¿Está seguro de eliminar: \n' + this.form.get('nombre')?.value);
     if(confirmDelete) {
-      this._catalog.delete(id).subscribe(() => {
+      this._catalog.delete(id, this.table?.value).subscribe(() => {
         this.catalogs.data.splice(this.currentIndexCatalog, 1);
         $('#modalCatalog').modal('toggle')
         this.toastr.info("Catalogo eliminado");
       });
     }
+  }
+
+  get table() {
+    return this.form.get('table');
   }
 
 }

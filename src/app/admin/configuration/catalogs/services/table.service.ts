@@ -19,12 +19,8 @@ export class TableService {
    * @param isFlat boolean para cuando queremos solo usarlo en algún select
    * @returns Observable de la petición
    */
-  index(table: string, isFlat: boolean = false) {
+  index(table: string) {
     this.params.set('table', table);
-
-    if(isFlat) {
-      this.params.set('isFlat', true);
-    }
     return this.http.get<Table[]>('catalogs', { params: this.params });
   }
 

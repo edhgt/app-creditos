@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CatalogService } from '../../configuration/catalogs/services/catalog.service';
 import { Profession } from 'src/app/core/models/profession.model';
 import { Nationality } from 'src/app/core/models/nationality.model';
 import { Deparment } from 'src/app/core/models/department.model';
@@ -26,7 +25,33 @@ export class CreateComponent {
   sucursals: Shop[] = [];
 
   constructor(
-    private catalog: CatalogService
-  ) {}
+    private formBuilder: FormBuilder
+  ) {
+    this.buildForm();
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      cui: ['', [Validators.required]],
+      nit: '',
+      nombres: ['', Validators.required],
+      apellidos: ['', Validators.required],
+      fecha_nacimiento: ['', Validators.required],
+      estado_civil: ['', Validators.required],
+      genero: ['', Validators.required],
+      celular: ['', Validators.required],
+      telefono: '',
+      correo: '',
+      direccion: '',
+      profesion_id: ['', Validators.required],
+      nacionalidad_id: ['', Validators.required],
+      departamento_id: ['', Validators.required],
+      municipio_id: ['', Validators.required],
+      condicion_vivienda_id: ['', Validators.required],
+      tipo_construccion_id: ['', Validators.required],
+    });
+  }
+
+  onSubmit() {}
 
 }

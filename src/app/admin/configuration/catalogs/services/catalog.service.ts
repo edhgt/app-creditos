@@ -12,8 +12,9 @@ export class CatalogService {
     private http: HttpClient
   ) { }
 
-  index(per_page?: number, offset?: number) {
+  index(table: string, per_page?: number, offset?: number) {
     let params = new HttpParams();
+    params = params.set('table', table);
     //if(per_page !== undefined && offset !== undefined) {
     if(per_page !== undefined) {
       params = params.set('per_page', per_page);
@@ -34,7 +35,9 @@ export class CatalogService {
     return this.http.put<Catalog>('catalogs/' + catalog.id, catalog);
   }
 
-  delete(id: number) {
-    return this.http.delete<Catalog>('catalogs/' + id);
+  delete(id: number, table: string) {
+    let params = new HttpParams();
+    params = params.set('table', table);
+    return this.http.delete<Catalog>('catalogs/' + id, { params });
   }
 }

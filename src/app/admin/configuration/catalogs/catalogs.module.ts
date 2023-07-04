@@ -4,13 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CatalogsRoutingModule } from './catalogs-routing.module';
 import { CatalogsComponent } from './catalogs.component';
-import { TablesComponent } from './tables/tables.component';
 
 
 @NgModule({
   declarations: [
-    CatalogsComponent,
-    TablesComponent
+    CatalogsComponent
   ],
   imports: [
     CommonModule,

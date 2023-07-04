@@ -22,36 +22,78 @@
         class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column"
         *ngFor="let client of clients"
       >
-        <div class="card bg-light d-flex flex-fill">
-          <div class="card-header text-muted border-bottom-0">
-            {{ client.cui }}
-          </div>
+        <div class="card d-flex flex-fill">
+          <div class="card-header text-muted border-bottom-0"></div>
           <div class="card-body pt-0">
             <div class="row">
-              <div class="col-7">
-                <h2 class="lead">
+              <div class="col-8 order-2">
+                <div class="btn-group float-right">
+                  <div class="btn-group dropleft">
+                    <i
+                      class="fas fa-lg fa-ellipsis-v"
+                      data-toggle="dropdown"
+                      aria-expanded="false"
+                      role="button"
+                    >
+                    </i>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item">
+                        <i class="fas fa-info-circle fa-fw"></i>
+                        Información
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" target="_blank">
+                        <i class="fas fa-file-pdf fa-fw text-danger"></i>
+                        Ficha de datos pdf
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="lead text-truncate">
                   <b>{{ client.nombres }} {{ client.apellidos }}</b>
                 </h2>
                 <ul class="ml-4 mb-0 fa-ul text-muted">
-                  <li class="small">
-                    <span class="fa-li"
-                      ><i class="fas fa-lg fa-building"></i
-                    ></span>
-                    Dirección: {{ client.direccion }}
+                  <li class="text-md">
+                    <span class="fa-li">
+                      <i class="fas fa-lg fa-info"></i>
+                    </span>
+                    {{ client.direccion }}
                   </li>
-                  <li class="small">
-                    <span class="fa-li"
-                      ><i class="fas fa-lg fa-phone"></i
-                    ></span>
-                    Celular: {{ client.celular }}
+                  <li class="text-md">
+                    <span class="fa-li">
+                      <i class="fas fa-lg fa-id-card"></i>
+                    </span>
+                    {{ client.cui }}
+                  </li>
+                  <li class="text-md">
+                    <span class="fa-li">
+                      <i class="fas fa-lg fa-hashtag"></i>
+                    </span>
+                    {{ client.nit }}
+                  </li>
+                  <li class="text-md" *ngIf="client.correo">
+                    <span class="fa-li">
+                      <i class="fas fa-lg fa-envelope"></i>
+                    </span>
+                    {{ client.correo }}
+                  </li>
+                  <li class="text-md">
+                    <span class="fa-li">
+                      <i class="fa fa-lg fa-phone"></i>
+                    </span>
+                    {{ client.celular }}
+                  </li>
+                  <li>
+                    <span class="badge badge-warning">{{ client.estado }}</span>
                   </li>
                 </ul>
               </div>
-              <div class="col-5 text-center">
+              <div class="col-4 order-1 text-center">
                 <img
-                  [src]="client.foto ? client.foto : 'assets/img/user-icon.png'"
+                  [src]="client.foto"
                   alt="user-avatar"
-                  class="rounded img-fluid"
+                  class="img-circle img-fluid"
+                  loading="lazy"
                 />
               </div>
             </div>

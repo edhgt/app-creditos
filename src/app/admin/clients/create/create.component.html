@@ -20,26 +20,29 @@
               <div class="card-body">
                 <div class="row">
                   <!--fila uno-->
-                  <div class="col-3">
+                  <div class="col-6">
                     <div class="form-group">
-                      <label for="fecha_solicitud">Fecha de solicitud:</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        id="fecha_solicitud"
-                        name="fecha_solicitud"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-9">
-                    <div class="form-group">
-                      <label for="nombre_cliente">Nombre del cliente:</label>
+                      <label for="nombres">Nombres:</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="nombre_cliente"
-                        name="nombre_cliente"
-                        placeholder="Nombre del cliente"
+                        id="nombres"
+                        name="nombres"
+                        placeholder="Nombres"
+                        formControlName="nombres"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="nombres">Apellidos:</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nombres"
+                        name="nombres"
+                        placeholder="Apellidos"
+                        formControlName="apellidos"
                       />
                     </div>
                   </div>
@@ -55,31 +58,46 @@
                         id="identificacion"
                         name="identificacion"
                         placeholder="Número de DPI"
+                        formControlName="cui"
                       />
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="profesion">Profesión:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="profesion"
-                        name="profesion"
-                        placeholder="Profesión"
-                      />
+                      <label for="profesion_id">Profesión:</label>
+                      <select
+                        name="profesion_id"
+                        id="profesion_id"
+                        class="custom-select"
+                        formControlName="profesion_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="profession.id"
+                          *ngFor="let profession of professions"
+                        >
+                          {{ profession.nombre }}
+                        </option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="nacionalidad">Nacionalidad:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="nacionalidad"
-                        name="nacionalidad"
-                        placeholder="Nacionalidad"
-                      />
+                      <label for="nacionalidad_id">Nacionalidades:</label>
+                      <select
+                        name="nacionalidad_id"
+                        id="nacionalidad_id"
+                        class="custom-select"
+                        formControlName="nacionalidad_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="nattionality.id"
+                          *ngFor="let nattionality of nationallities"
+                        >
+                          {{ nattionality.nombre }}
+                        </option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-3">
@@ -91,6 +109,7 @@
                         id="nit"
                         name="nit"
                         placeholder="Número de nit"
+                        formControlName="nit"
                       />
                     </div>
                   </div>
@@ -105,43 +124,46 @@
                         class="form-control"
                         id="fecha_nacimiento"
                         name="fecha_nacimiento"
+                        formControlName="fecha_nacimiento"
                       />
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="municipio">Municipio:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="municipio"
-                        name="municipio"
-                        placeholder="Municipio"
-                      />
+                      <label for="municipio_id">Municipio:</label>
+                      <select
+                        name="municipio_id"
+                        id="municipio_id"
+                        class="custom-select"
+                        formControlName="municipio_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="municipality.id"
+                          *ngFor="let municipality of municipalities"
+                        >
+                          {{ municipality.nombre }}
+                        </option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="departamento">Departamento:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="departamento"
-                        name="departamento"
-                        placeholder="Departamento"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="codigo_cliente">Código de Cliente:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="codigo_cliente"
-                        name="codigo_cliente"
-                        placeholder="Código de Cliente"
-                      />
+                      <label for="departamento_id">Departamento:</label>
+                      <select
+                        name="departamento_id"
+                        id="departamento_id"
+                        class="custom-select"
+                        formControlName="departamento_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="department.id"
+                          *ngFor="let department of departments"
+                        >
+                          {{ department.nombre }}
+                        </option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -149,38 +171,32 @@
                 <div class="row">
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="edad">Edad del cliente:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="edad"
-                        name="edad"
-                        placeholder="Edad"
-                      />
+                      <label for="estado_civil">Estado civil:</label>
+                      <select
+                        class="custom-select"
+                        name="estado_civil"
+                        id="estado_civil"
+                        formControlName="estado_civil"
+                      >
+                        <option value=""></option>
+                        <option value="S">Soltero/a</option>
+                        <option value="C">Casado/a</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-3">
                     <div class="form-group">
-                      <label for="estado_civil">Estado civil:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="estado_civil"
-                        name="estado_civil"
-                        placeholder="Estado civil"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="conyuge">Nombre del Conyugue:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="conyuge"
-                        name="conyuge"
-                        placeholder="Nombre del Conyugue"
-                      />
+                      <label for="genero">Genero:</label>
+                      <select
+                        class="custom-select"
+                        name="genero"
+                        id="genero"
+                        formControlName="genero"
+                      >
+                        <option value=""></option>
+                        <option value="F">Femenino</option>
+                        <option value="M">Masculino</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -195,6 +211,7 @@
                         id="telefono_casa"
                         name="telefono_casa"
                         placeholder="Teléfono de casa"
+                        formControlName="telefono"
                       />
                     </div>
                   </div>
@@ -207,20 +224,7 @@
                         id="telefono_celular"
                         name="telefono_celular"
                         placeholder="Teléfono Celular"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="telefono_conyuge"
-                        >Teléfono del Conyugue:</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="telefono_conyuge"
-                        name="telefono_conyuge"
-                        placeholder="Teléfono del Conyugue"
+                        formControlName="celular"
                       />
                     </div>
                   </div>
@@ -229,37 +233,64 @@
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="nombre_recomienda">Recomendado por:</label>
+                      <label for="condicion_vivienda_id"
+                        >Condición de vivienda:</label
+                      >
+                      <select
+                        name="condicion_vivienda_id"
+                        id="condicion_vivienda_id"
+                        class="custom-select"
+                        formControlName="condicion_vivienda_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="housingCondition.id"
+                          *ngFor="let housingCondition of housingConditions"
+                        >
+                          {{ housingCondition.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="tipo_construccion_id"
+                        >Tipo de construcción:</label
+                      >
+                      <select
+                        name="tipo_construccion_id"
+                        id="tipo_construccion_id"
+                        class="custom-select"
+                        formControlName="tipo_construccion_id"
+                      >
+                        <option value=""></option>
+                        <option
+                          [value]="typeConstruction.id"
+                          *ngFor="let typeConstruction of typeConstructions"
+                        >
+                          {{ typeConstruction.nombre }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="direccion">Dirección:</label>
                       <input
                         type="text"
-                        class="form-control"
-                        id="nombre_recomienda"
-                        name="nombre_recomienda"
-                        placeholder="Recomendado por"
+                        name="direccion"
+                        id="direccion"
+                        class="custom-select"
+                        formControlName="direccion"
                       />
                     </div>
                   </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label>Condiciones de vivienda</label>
-                      <select class="custom-select">
-                        <option>Propia</option>
-                        <option>Rentada</option>
-                        <option>Familiar</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label>Tipo de Contrucción</label>
-                      <select class="custom-select">
-                        <option>Block y cemento</option>
-                        <option>Maderas</option>
-                        <option>Láminas</option>
-                        <option>Adobe</option>
-                        <option>Otros</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <button class="btn btn-success" type="submit">
+                      Registrar
+                    </button>
                   </div>
                 </div>
               </div>

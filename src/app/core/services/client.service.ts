@@ -14,4 +14,8 @@ export class ClientService {
   getAll() {
     return this.http.get<any>('clients');
   }
+
+  store(client: Client) {
+    return this.http.post<Client>('clients', client);
+  }
 }

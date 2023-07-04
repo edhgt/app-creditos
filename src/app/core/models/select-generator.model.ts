@@ -1,5 +1,6 @@
 export interface SelectGenerator{
   id: number;
-  name: string;
-  table: string;
+  name?: string;
+  nombre?: string;
+  table?: string;
 }

@@ -16,6 +16,7 @@ export interface Client {
   correo?: string;
   observaciones?: string;
   estado?: EstadoType;
+  estado2?: string;
   fotografia: string;
   direccion?: string;
   profesion_id: number;

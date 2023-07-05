@@ -88,6 +88,10 @@ export class CreateComponent implements OnInit {
       this.clientService.store(this.form.value).subscribe(response => {
         this.router.navigate(['/app/clients']);
       })
+    } else {
+      this.form.markAllAsTouched();
+      console.log('Esta incorrecto')
+      console.log(this.form.errors)
     }
   }
 

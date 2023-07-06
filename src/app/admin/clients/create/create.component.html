@@ -16,63 +16,62 @@
             <div class="card-header">
               <h3 class="card-title">DATOS PRINCIPALES</h3>
             </div>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal">
               <div class="card-body">
-                <div class="row">
-                  <!--fila uno-->
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="nombres">Nombres:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="nombres"
-                        name="nombres"
-                        placeholder="Nombre del cliente"
-                        formControlName="nombres"
+                <!--fila uno-->
+                <div class="form-group row">
+                  <label for="nombres" class="col-sm-2 col-form-label">Nombres</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nombres"
+                      name="nombres"
+                      placeholder="Nombre del cliente"
+                      formControlName="nombres"
                       />
                     </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="apellidos">Apellidos:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="apellidos"
-                        name="apellidos"
-                        placeholder="Nombre del cliente"
-                        formControlName="apellidos"
-                      />
-                    </div>
-                  </div>
                 </div>
                 <!--fila dos-->
-                <div class="row">
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="identificacion">Identificación (cui):</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="identificacion"
-                        name="identificacion"
-                        placeholder="Número de DPI"
-                        formControlName="cui"
+                <div class="form-group row">
+                  <label for="apellidos" class="col-sm-2 col-form-label">Apellidos</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="apellidos"
+                      name="apellidos"
+                      placeholder="Apellidos del cliente"
+                      formControlName="apellidos"
                       />
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="profesion_id">Profesión:</label>
-                      <select
-                        name="profesion_id"
-                        id="profesion_id"
-                        class="custom-select"
-                        formControlName="profesion_id"
+                </div>
+                <!--fila tres-->
+                <div class="form-group row">
+                  <label for="identificacion" class="col-sm-2 col-form-label">Identificación (cui)</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="identificacion"
+                      name="identificacion"
+                      placeholder="Número de DPI"
+                      formControlName="identificacion"
+                      />
+                    </div>
+                </div>
+                <!--fila cuatro-->
+                <div class="form-group row">
+                  <label for="profesion_id" class="col-sm-2 col-form-label">Profesión</label>
+                  <div class="col-sm-10">
+                    <select
+                      class="custom-select"
+                      id="profesion_id"
+                      name="profesion_id"
+                      formControlName="profesion_id"
                       >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="profession.id"
                           *ngFor="let profession of professions"
                         >
@@ -80,18 +79,19 @@
                         </option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="nacionalidad_id">Nacionalidades:</label>
-                      <select
-                        name="nacionalidad_id"
-                        id="nacionalidad_id"
-                        class="custom-select"
-                        formControlName="nacionalidad_id"
+                </div>
+                <!--fila cinco-->
+                <div class="form-group row">
+                  <label for="nacionalidad_id" class="col-sm-2 col-form-label">Nacionalidades</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="nacionalidad_id"
+                      id="nacionalidad_id"
+                      class="custom-select"
+                      formControlName="nacionalidad_id"
                       >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="nattionality.id"
                           *ngFor="let nattionality of nationallities"
                         >
@@ -99,46 +99,46 @@
                         </option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="nit">Número de nit:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="nit"
-                        name="nit"
-                        placeholder="Número de nit"
-                        formControlName="nit"
-                      />
-                    </div>
-                  </div>
                 </div>
-                <!--fila tres-->
-                <div class="row">
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-                      <input
-                        type="date"
-                        class="form-control"
-                        id="fecha_nacimiento"
-                        name="fecha_nacimiento"
-                        formControlName="fecha_nacimiento"
+                <!--fila seis-->
+                <div class="form-group row">
+                  <label for="nit" class="col-sm-2 col-form-label">Número de nit</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nit"
+                      name="nit"
+                      placeholder="Número de nit"
+                      formControlName="nit"
                       />
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="municipio_id">Municipio:</label>
-                      <select
-                        name="municipio_id"
-                        id="municipio_id"
-                        class="custom-select"
-                        formControlName="municipio_id"
+                </div>
+                <!--fila siete-->
+                <div class="form-group row">
+                  <label for="fecha_nacimiento" class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="fecha_nacimiento"
+                      name="fecha_nacimiento"
+                      formControlName="fecha_nacimiento"
+                      />
+                    </div>
+                </div>
+                <!--fila ocho-->
+                <div class="form-group row">
+                  <label for="municipio_id" class="col-sm-2 col-form-label">Municipio</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="municipio_id"
+                      id="municipio_id"
+                      class="custom-select"
+                      formControlName="municipio_id"
                       >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="municipality.id"
                           *ngFor="let municipality of municipalities"
                         >
@@ -146,18 +146,19 @@
                         </option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="departamento_id">Departamento:</label>
-                      <select
-                        name="departamento_id"
-                        id="departamento_id"
-                        class="custom-select"
-                        formControlName="departamento_id"
+                </div>
+                <!--fila nueve-->
+                <div class="form-group row">
+                  <label for="departamento_id" class="col-sm-2 col-form-label">Departamento</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="departamento_id"
+                      id="departamento_id"
+                      class="custom-select"
+                      formControlName="departamento_id"
                       >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="department.id"
                           *ngFor="let department of departments"
                         >
@@ -165,85 +166,79 @@
                         </option>
                       </select>
                     </div>
-                  </div>
                 </div>
-                <!--fila cuatro-->
-                <div class="row">
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="estado_civil">Estado civil:</label>
-                      <select
-                        class="custom-select"
-                        name="estado_civil"
-                        id="estado_civil"
-                        formControlName="estado_civil"
+                <!--fila diez-->
+                <div class="form-group row">
+                  <label for="estado_civil" class="col-sm-2 col-form-label">Estado civil</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="estado_civil"
+                      id="estado_civil"
+                      class="custom-select"
+                      formControlName="estado_civil"
                       >
-                        <option value=""></option>
+                        <option value="">Seleccione</option>
                         <option value="S">Soltero/a</option>
                         <option value="C">Casado/a</option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <label for="genero">Genero:</label>
-                      <select
-                        class="custom-select"
-                        name="genero"
-                        id="genero"
-                        formControlName="genero"
+                </div>
+                <!--fila once-->
+                <div class="form-group row">
+                  <label for="genero" class="col-sm-2 col-form-label">Genero</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="genero"
+                      id="genero"
+                      class="custom-select"
+                      formControlName="genero"
                       >
-                        <option value=""></option>
+                        <option value="">Seleccione</option>
                         <option value="F">Femenino</option>
                         <option value="M">Masculino</option>
                       </select>
                     </div>
-                  </div>
                 </div>
-                <!--fila cinco-->
-                <div class="row">
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="telefono_casa">Teléfono de casa:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="telefono_casa"
-                        name="telefono_casa"
-                        placeholder="Teléfono de casa"
-                        formControlName="telefono"
+                <!--fila doce-->
+                <div class="form-group row">
+                  <label for="telefono_casa" class="col-sm-2 col-form-label">Teléfono de casa</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefono_casa"
+                      name="telefono_casa"
+                      placeholder="Teléfono de casa"
+                      formControlName="telefono"
                       />
                     </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="telefono_celular">Teléfono Celular:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="telefono_celular"
-                        name="telefono_celular"
-                        placeholder="Teléfono Celular"
-                        formControlName="celular"
+                </div>
+                <!--fila trece-->
+                <div class="form-group row">
+                  <label for="telefono_celular" class="col-sm-2 col-form-label">Teléfono Celular</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="telefono_celular"
+                      name="telefono_celular"
+                      placeholder="Teléfono Celular"
+                      formControlName="celular"
                       />
                     </div>
-                  </div>
                 </div>
-                <!--fila seis-->
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="condicion_vivienda_id"
-                        >Condición de vivienda:</label
+                <!--fila catorce-->
+                <div class="form-group row">
+                  <label for="condicion_vivienda_id" class="col-sm-2 col-form-label">Condición de vivienda</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="condicion_vivienda_id"
+                      id="condicion_vivienda_id"
+                      class="custom-select"
+                      formControlName="condicion_vivienda_id"
                       >
-                      <select
-                        name="condicion_vivienda_id"
-                        id="condicion_vivienda_id"
-                        class="custom-select"
-                        formControlName="condicion_vivienda_id"
-                      >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="housingCondition.id"
                           *ngFor="let housingCondition of housingConditions"
                         >
@@ -251,20 +246,19 @@
                         </option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="tipo_construccion_id"
-                        >Tipo de construcción:</label
+                </div>
+                <!--fila catorce-->
+                <div class="form-group row">
+                  <label for="tipo_construccion_id" class="col-sm-2 col-form-label">Tipo de construcción</label>
+                  <div class="col-sm-10">
+                    <select
+                      name="tipo_construccion_id"
+                      id="tipo_construccion_id"
+                      class="custom-select"
+                      formControlName="tipo_construccion_id"
                       >
-                      <select
-                        name="tipo_construccion_id"
-                        id="tipo_construccion_id"
-                        class="custom-select"
-                        formControlName="tipo_construccion_id"
-                      >
-                        <option value=""></option>
-                        <option
+                      <option value="">Seleccione</option>
+                      <option
                           [value]="typeConstruction.id"
                           *ngFor="let typeConstruction of typeConstructions"
                         >
@@ -272,19 +266,20 @@
                         </option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="direccion">Dirección:</label>
-                      <input
-                        type="text"
-                        name="direccion"
-                        id="direccion"
-                        class="custom-select"
-                        formControlName="direccion"
+                </div>
+                <!--fila quince-->
+                <div class="form-group row">
+                  <label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
+                  <div class="col-sm-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="direccion"
+                      name="direccion"
+                      placeholder="Dirección de domicilio"
+                      formControlName="direccion"
                       />
                     </div>
-                  </div>
                 </div>
                 <div class="row">
                   <div class="col-12">

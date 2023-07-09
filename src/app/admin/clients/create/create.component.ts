@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SelectGeneratorService } from 'src/app/core/services/select-generator.service';
 import { SelectGenerator } from 'src/app/core/models/select-generator.model';
 import { Profession } from 'src/app/core/models/profession.model';
@@ -91,6 +91,7 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.form.controls)
     if(this.form.valid) {
       this.clientService.store(this.form.value).subscribe(() => {
         this.router.navigate(['/app/clients']);
@@ -114,5 +115,4 @@ export class CreateComponent implements OnInit {
       }));
     }
   }
-
 }

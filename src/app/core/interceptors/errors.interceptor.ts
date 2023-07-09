@@ -10,12 +10,15 @@ import { Observable, catchError, throwError } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable()
 export class ErrorsInterceptor implements HttpInterceptor {
   constructor(
     private router: Router,
     private tokenService: TokenService,
+    private toastr: ToastrService
   ) {}
 
   intercept(
@@ -33,7 +36,8 @@ export class ErrorsInterceptor implements HttpInterceptor {
         if (error.status === 401) message = 'No posee permisos suficientes.';
         else if (error.status === 403) message = 'Acceso prohibido.';
         else if (error.status === 404) message = 'Registro no encontrado.';
-        else message = 'Ha ocurrido un error inesperado.';
+        else message = error.error.message || error.statusText;
+        this.toastr.error(message);
         return throwError(() => error);
       })
     );

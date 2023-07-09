@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SelectGeneratorService } from 'src/app/core/services/select-generator.service';
 import { SelectGenerator } from 'src/app/core/models/select-generator.model';
 import { Profession } from 'src/app/core/models/profession.model';
@@ -30,6 +30,7 @@ export class CreateComponent implements OnInit {
   housingConditions: SelectGenerator[] = [];
   typeConstructions: SelectGenerator[] = [];
   sucursals: SelectGenerator[] = [];
+  parentescos: SelectGenerator[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,6 +60,11 @@ export class CreateComponent implements OnInit {
     this.selectGeneratorService.getAll('tipo_construcciones').subscribe((response) => {
       this.typeConstructions = response
     });
+    this.selectGeneratorService.getAll('parentescos').subscribe((response) => {
+      this.parentescos = response
+    });
+
+    this.agregarReferencia();
   }
 
   private buildForm() {
@@ -72,26 +78,40 @@ export class CreateComponent implements OnInit {
       genero: ['', Validators.required],
       celular: ['', Validators.required],
       telefono: '',
-      correo: '',
-      direccion: '',
+      correo: ['', Validators.email],
+      direccion: ['', Validators.required],
       profesion_id: ['', Validators.required],
-      nacionalidad_id: ['', Validators.required],
+      nacionalidad_id: [1, Validators.required],
       departamento_id: ['', Validators.required],
       municipio_id: ['', Validators.required],
       condicion_vivienda_id: ['', Validators.required],
       tipo_construccion_id: ['', Validators.required],
+      referencias: this.formBuilder.array([])
     });
   }
 
   onSubmit() {
     if(this.form.valid) {
-      this.clientService.store(this.form.value).subscribe(response => {
+      this.clientService.store(this.form.value).subscribe(() => {
         this.router.navigate(['/app/clients']);
       })
     } else {
       this.form.markAllAsTouched();
-      console.log('Esta incorrecto')
-      console.log(this.form.errors)
+    }
+  }
+
+  get referencias() {
+    return this.form.get('referencias') as FormArray;
+  }
+
+  agregarReferencia() {
+    for (let i = 0; i < 5; i++) {
+      this.referencias.push(this.formBuilder.group({
+        nombre: ['', Validators.required],
+        direccion: '',
+        telefono: ['', Validators.required],
+        parentesco_id: ['', Validators.required]
+      }));
     }
   }
 

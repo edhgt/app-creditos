@@ -18,4 +18,8 @@ export class ClientService {
   store(client: Client) {
     return this.http.post<Client>('clients', client);
   }
+
+  show(id: string | null) {
+    return this.http.get<Client>('clients/' + id);
+  }
 }

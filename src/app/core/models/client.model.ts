@@ -8,9 +8,9 @@ export interface Client {
   nit?: string;
   nombres: string;
   apellidos: string;
-  fecha_nacimiento: Date;
-  estado_civil: EstadoCivilType;
-  genero: GeneroType;
+  fecha_nacimiento?: Date;
+  estado_civil?: EstadoCivilType;
+  genero?: GeneroType;
   celular: string;
   telefono?: string;
   correo?: string;
@@ -25,7 +25,7 @@ export interface Client {
   municipio_id: number;
   condicion_vivienda_id: number;
   tipo_construccion_id: number;
-  sucursal_id: number;
+  sucursal_id?: number;
   created_at?: Date;
   updated_at?: Date;
   deleted_at?: Date;

@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-12">
-          <h1 class="m-0">Registro de cliente</h1>
+          <h1 class="m-0">{{ title }}</h1>
         </div>
       </div>
     </div>
@@ -338,7 +338,10 @@
             </div>
             <hr />
             <h4 class="text-primary mt-4">Referencias</h4>
-            <p class="text-muted">3 Referencias personales y 2 referencias familiares que no vivan con el cliente</p>
+            <p class="text-muted">
+              3 referencias personales y 2 referencias familiares que no vivan
+              con el cliente
+            </p>
             <div formArrayName="referencias">
               <div class="table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
@@ -412,7 +415,13 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Registrar cliente</button>
+                <button
+                  class="btn btn-success btn-lg btn-block"
+                  type="submit"
+                  [disabled]="form.invalid"
+                >
+                  {{ title }}
+                </button>
               </div>
             </div>
           </form>

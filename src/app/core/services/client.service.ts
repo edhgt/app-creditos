@@ -22,4 +22,8 @@ export class ClientService {
   show(id: string | null) {
     return this.http.get<Client>('clients/' + id);
   }
+
+  update(id: string | null, client: Client) {
+    return this.http.put<Client>('clients/' + id, client);
+  }
 }

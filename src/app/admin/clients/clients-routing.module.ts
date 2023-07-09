@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: ':id/show',
     component: ShowComponent
+  },
+  {
+    path: ':id/edit',
+    component: CreateComponent
   }
 ];
 

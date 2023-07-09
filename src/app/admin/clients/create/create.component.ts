@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+
 import { SelectGeneratorService } from 'src/app/core/services/select-generator.service';
 import { SelectGenerator } from 'src/app/core/models/select-generator.model';
 import { Profession } from 'src/app/core/models/profession.model';
@@ -21,7 +23,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
+  id: string | null = null;
   form!: FormGroup;
+  type: string = 'create';
+  title: string = 'Registrar cliente';
 
   professions: SelectGenerator[] = [];
   nationallities: SelectGenerator[] = [];
@@ -34,6 +39,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private selectGeneratorService: SelectGeneratorService,
     private clientService: ClientService,
     private router: Router
@@ -65,10 +71,24 @@ export class CreateComponent implements OnInit {
     });
 
     this.agregarReferencia();
+
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    if(this.id) {
+      this.type = 'update';
+      this.title = 'Actualizar cliente';
+    }
+
+    if(this.type == 'update') {
+      this.clientService.show(this.id).subscribe(response => {
+        this.form.patchValue(response);
+      })
+    }
   }
 
   private buildForm() {
     this.form = this.formBuilder.group({
+      id: '',
       cui: ['', [Validators.required]],
       nit: '',
       nombres: ['', Validators.required],
@@ -91,11 +111,17 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.controls)
     if(this.form.valid) {
-      this.clientService.store(this.form.value).subscribe(() => {
-        this.router.navigate(['/app/clients']);
-      })
+      if(this.type == 'create') {
+        this.clientService.store(this.form.value).subscribe(() => {
+          this.router.navigate(['/app/clients']);
+        });
+      } else {
+        this.clientService.update(this.id, this.form.value).subscribe(() => {
+          this.router.navigate(['/app/clients']);
+        });
+
+      }
     } else {
       this.form.markAllAsTouched();
     }
